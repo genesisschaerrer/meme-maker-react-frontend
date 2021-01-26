@@ -27,4 +27,4 @@ function Main() {
 }
 
 ReactDOM.render(<Main />, document.querySelector(".app-wrapper"));
-document.addEventListener("DOMContentLoaded", main);
+

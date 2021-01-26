@@ -1,28 +1,26 @@
-html {
-    font-size: 62.5%; // 1rem is 10px
-}
+.meme {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    justify-content: space-around;
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    font-family: 'montserrat';
-}
+    .img-wrapper {
+        height: 50%;  
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
-body {
-    overflow-x: hidden;
-    font-weight: normal;
+        .meme-img {
+            height: auto;
+            width: 250px;
+        }
+    }
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.app {
-    margin-top: 2rem;
-    display: grid;
-    justify-items: center;
+    img {
+        height: auto;
+        width: 30px;
+    }
 }

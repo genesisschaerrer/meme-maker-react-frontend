@@ -1,12 +1,30 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
+import Meme from "./meme"
 
-export default class App extends Component {
-  render() {
+const App = () => {
+  const [memes, setMemes] = useState([])
+
+  useEffect(() => {
+    fetch("https://gms-meme-flask-api.herokuapp.com/memes")
+      .then(res => res.json())
+      .then(data => setMemes(data))
+      .catch(err => console.error("Fetch Memes error", err))
+  }, [])
+
+  const renderMemes = () => {
+    return memes.map(meme => {
+      console.log(meme)
+      return (
+        <Meme key={meme.id} {...meme} />
+      )
+    })
+  }
+
     return (
       <div className='app'>
-        <h1>DevCamp React Starter</h1>
-        <h2>React Redux Router</h2>
+        {renderMemes()}
       </div>
     );
-  }
 }
+
+export default App
