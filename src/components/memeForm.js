@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react"
 import axios from "axios"
 import DropzoneComponent from "react-dropzone-component"
+import {navigate} from "hookrouter"
 
 import "../../node_modules/react-dropzone-component/styles/filepicker.css"
 import "../../node_modules/dropzone/dist/min/dropzone.min.css"
@@ -48,25 +49,61 @@ const MemeForm = (props) => {
         }
     }
 
+    const editSubmit = () => {
+        fetch(`https://gms-meme-flask-api.herokuapp.com/meme/${props.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                text,
+                favorite,
+            })
+        })
+        .then(() => imageRef.current.dropzone.removeAllFiles())
+        .then(() => navigate("/"))
+        .catch(err => console.error("PUT error: ", err))
+    }
+
    const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("https://gms-meme-flask-api.herokuapp.com/add-meme", {
-            text,
-            favorite,
-            image
-        })
-        .then(() => {
-            setText("")
-            setImage("")
-            setFavorite(false)
-            imageRef.current.dropzone.removeAllFiles()
-        })
-        .catch(err => console.error("handle submit error: ", err))
-    }
+
+        switch(!props.id) {
+            case false: 
+                editSubmit();
+                break
+            default:
+                axios.post("https://gms-meme-flask-api.herokuapp.com/add-meme", {
+                    text,
+                    favorite,
+                    image
+                })
+                .then(() => {
+                    setText("")
+                    setImage("")
+                    setFavorite(false)
+                    imageRef.current.dropzone.removeAllFiles()
+                })
+                .catch(err => console.error("handle submit error: ", err))
+            } 
+        }
+
+    useEffect(() => {
+        if(props.id) {
+            fetch(`https://gms-meme-flask-api.herokuapp.com/meme/${props.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setText(data.text)
+                    setFavorite(data.favorite)
+                })
+                .catch(err => console.error("Fetch meme error: ", err ))
+        }
+    }, [])
     
     return(
         <div>
-            <h1>Add a Meme</h1>
+            <h1>{props.id ? "Edit Meme": "Add Meme"}</h1>
 
             <form onSubmit={handleSubmit}>
                 <DropzoneComponent 
@@ -93,7 +130,7 @@ const MemeForm = (props) => {
                     <span>Favorite?</span>
                 </div>
 
-                <button type="submit">Post Meme</button>
+                <button type="submit">{props.id ? "Edit Meme": "Post Meme"}</button>
             </form>
         </div>
     )
