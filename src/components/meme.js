@@ -11,8 +11,8 @@ const Meme = props => {
 
             {props.favorite ? <img src={"https://library.kissclipart.com/20180830/fuw/kissclipart-twinkle-little-star-clip-art-clipart-twinkle-twin-0d72b7a5dc286d1e.jpg"} alt='heart' /> : null}
 
-            <button>Delete</button>
-            <button>Edit</button>
+            <button onClick={() => props.deleteMeme(props.id)}>Delete</button>
+            <button onClick={() => props.editMeme(props.id)}>Edit</button>
         </div>
     )
 }
