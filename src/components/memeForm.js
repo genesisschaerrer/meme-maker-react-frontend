@@ -15,7 +15,7 @@ const MemeForm = (props) => {
 
     const componentConfig = () => {
         return {
-            inconFiletyps: [".jpg", ".png"],
+            inconFiletypes: [".jpg", ".png"],
             showFiletypeIcon: true,
             postUrl: "https://httpbin.org/post"
         }

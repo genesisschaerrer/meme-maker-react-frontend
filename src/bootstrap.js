@@ -8,6 +8,9 @@ import "./style/main.scss";
 import Meme from "./components/memeForm"
 import MemeForm from "./components/memeForm";
 
+import Logo from "../static/assets/images/logo.svg"
+
+
 const routes = {
   "/": () => <App /> ,
   "/form": () => <MemeForm />,
@@ -18,10 +21,10 @@ function Main() {
  return(
    <div>
      <div className="navbar">
-        <A href="/">Home</A>
+        <A style={{"backgroundColor": "yellow"}} href="/"><img className="logo" src={Logo} /></A>
         <A href="/form">Form</A>
      </div>
-
+      <A href="/form">get started</A>
      {useRoutes(routes)}
    </div>
  )
