@@ -19,12 +19,15 @@ const routes = {
 
 function Main() {
  return(
-   <div>
-     <div className="navbar">
-        <A style={{"backgroundColor": "yellow"}} href="/"><img className="logo" src={Logo} /></A>
-        <A href="/form">Form</A>
+   <div className="main-container">
+      <div className="navbar">
+        <A href="/"><img className="logo" src={Logo} /></A>
+      </div>
+     
+     <div className="start-btn-container">
+        <A className="start-btn" href="/form">get started</A>
      </div>
-      <A href="/form">get started</A>
+      
      {useRoutes(routes)}
    </div>
  )

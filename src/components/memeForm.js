@@ -10,8 +10,11 @@ import "../../node_modules/dropzone/dist/min/dropzone.min.css"
 const MemeForm = (props) => {
     const imageRef = useRef(null)
     const [text, setText] = useState("")
+    const [topText, setTopText] = useState("")
+    const [bottomText, setBottomText] = useState("")
     const [favorite, setFavorite] = useState(false)
     const [image, setImage] = useState("")
+
 
     const componentConfig = () => {
         return {
@@ -66,21 +69,23 @@ const MemeForm = (props) => {
         .catch(err => console.error("PUT error: ", err))
     }
 
+
    const handleSubmit = (e) => {
         e.preventDefault()
-
+        
         switch(!props.id) {
             case false: 
                 editSubmit();
                 break
             default:
                 axios.post("https://gms-meme-flask-api.herokuapp.com/add-meme", {
-                    text,
+                    text: new Array(topText, bottomText).join("/*/"),
                     favorite,
                     image
                 })
                 .then(() => {
                     setText("")
+                    setBottomText("")
                     setImage("")
                     setFavorite(false)
                     imageRef.current.dropzone.removeAllFiles()
@@ -95,6 +100,7 @@ const MemeForm = (props) => {
                 .then(res => res.json())
                 .then(data => {
                     setText(data.text)
+                    setBottomText(data.bottom_text)
                     setFavorite(data.favorite)
                 })
                 .catch(err => console.error("Fetch meme error: ", err ))
@@ -116,9 +122,16 @@ const MemeForm = (props) => {
                 </DropzoneComponent>
                 <input 
                 type="text"
-                placeholder="enter caption"
-                value={text}
-                onChange={e => setText(e.target.value)}
+                placeholder="enter top caption"
+                value={topText}
+                onChange={e =>  setTopText(e.target.value)}
+                />
+
+                <input
+                type="text"
+                placeholder="enter bottom caption"
+                value={bottomText}
+                onChange={e => setBottomText(e.target.value)}
                 />
 
                 <div>

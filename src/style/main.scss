@@ -1,33 +1,77 @@
-.logo{
-    width: 200px;
-    margin: 0;
-    padding: 0;
+body {
+    margin: 0 auto;
 }
 
+.main-container {
+background-color: #F6E4DC;
 
-.meme {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    height: 400px;
-    justify-content: space-around;
+    .navbar{
+        background-color: white;
 
-    .img-wrapper {
-        height: 50%;  
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        .meme-img {
-            height: auto;
-            width: 250px;
+        .logo{
+            width: 175px;
+            background-color: white;
+            padding: 1em 2em;
         }
     }
 
-    img {
-        height: auto;
-        width: 30px;
+    .start-btn-container{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        justify-content: center;
+        align-items: flex-end;
+
+        .start-btn{
+            background-color: #D12C23;
+            text-decoration: none;
+            font-size: 2.5rem;
+            padding: .4em 1.3em;
+        }
+    }
+
+    .app{
+        justify-content: space-between;
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .meme {
+        margin-top: 4em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 360px;
+        height: 450px;
+        justify-content: space-around;
+        
+
+        // .img-wrapper {
+        //     height: 50%;  
+        //     width: 100%;
+        //     display: flex;
+        //     justify-content: center;
+
+            .meme-text {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: space-between;
+
+                .text{
+                    color: white;
+                    text-align: center;
+                    background-color: black;
+                    font-size: 25px;
+                    width: 100%;
+                }
+            }
+
+        .fav {
+            height: auto;
+            width: 30px;
+        }
     }
 }
