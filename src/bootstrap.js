@@ -4,11 +4,12 @@ import { useRoutes, A} from "hookrouter"
 
 
 import App from "./components/app";
-import "./style/main.scss";
+
 import Meme from "./components/memeForm"
 import MemeForm from "./components/memeForm";
 
 import Logo from "../static/assets/images/logo.svg"
+import "./style/main.scss";
 
 
 const routes = {
@@ -23,10 +24,6 @@ function Main() {
       <div className="navbar">
         <A href="/"><img className="logo" src={Logo} /></A>
       </div>
-     
-     <div className="start-btn-container">
-        <A className="start-btn" href="/form">get started</A>
-     </div>
       
      {useRoutes(routes)}
    </div>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
 import Meme from "./meme"
-import { navigate } from 'hookrouter';
+import { navigate, A } from 'hookrouter';
 
 const App = () => {
   const [memes, setMemes] = useState([])
@@ -25,7 +25,6 @@ const App = () => {
 
   const renderMemes = () => {
     return memes.map(meme => {
-      console.log(meme)
       return (
         <Meme
          key={meme.id} 
@@ -38,8 +37,11 @@ const App = () => {
   }
 
     return (
-      <div className='app'>
+      <div className='meme-display'>
+        <A className="start-btn" href="/form">Get started</A>
+        <div className="meme-wrapper">
         {renderMemes()}
+        </div>
       </div>
     );
 }

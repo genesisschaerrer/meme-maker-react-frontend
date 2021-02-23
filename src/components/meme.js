@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 
+import favorite from "../../static/assets/images/favorite.png"
+
 const Meme = props => {
     const [topText, setTopText] = useState("")
     const [bottomText, setBottomTex] = useState("")
@@ -16,10 +18,13 @@ const Meme = props => {
                     "height": "300px"
                 }}><div className="text">{text[0]}</div><div className="text">{text[1]}</div></div>
 
-            {props.favorite ? <img className="fav" src={"https://library.kissclipart.com/20180830/fuw/kissclipart-twinkle-little-star-clip-art-clipart-twinkle-twin-0d72b7a5dc286d1e.jpg"} alt='heart' /> : null}
 
-            <button onClick={() => props.deleteMeme(props.id)}>Delete</button>
-            <button onClick={() => props.editMeme(props.id)}>Edit</button>
+            <div className="buttons-wrapper">
+                <button className="delete-btn" onClick={() => props.deleteMeme(props.id)}>Delete</button>
+                <button className="edit-btn" onClick={() => props.editMeme(props.id)}>Edit</button>
+            </div>
+
+            {props.favorite ? <img className="fav" src={favorite} alt='heart' /> : null}
         </div>
     )
 }

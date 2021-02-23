@@ -1,0 +1,60 @@
+.form-title {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #302F2F;
+}
+
+.meme-form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4em auto;
+
+    .form{
+        background-color: #302F2F;
+        width: 50%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2em;
+        border-radius: 20px;
+        
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: 0 auto;
+    
+            .input {
+                padding: .5em;
+                margin-top: 1em;
+                outline: none;
+                border: none;
+            }
+        }
+
+        .fav-text {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn {
+            letter-spacing: 2px;
+            border: none;
+            font-size: 1rem;
+            padding: .3em .7em;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: green;
+                color: white;
+               }               
+        }
+
+    }
+}
