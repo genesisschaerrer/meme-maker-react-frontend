@@ -123,7 +123,7 @@ const MemeForm = (props) => {
                 djsConfig={djsConfig()}
                 eventHandlers={handleDrop()}
                 > 
-                    Drop Meme
+                    <div className="dz-message">Drop Meme Image</div>
                 </DropzoneComponent>
                 <div className="input-wrapper">
                     <input 
